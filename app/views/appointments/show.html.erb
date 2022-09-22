@@ -1,2 +1,19 @@
-<h1>Appointments#show</h1>
-<p>Find me in app/views/appointments/show.html.erb</p>
+<h3>Appointment Details</h3>
+
+
+  <table>
+    <tr>
+      <th>Client's Name</th>
+      <th>Trainer's Name</th>
+      <th>Appointment Time</th>
+      <th> Action </th>
+    </tr>
+    <tr>
+    <td><%= @client.name %></td> 
+    <td><%= @trainer.name %></td> 
+    <td><%= @appointment.time.strftime("%B %d, %Y at %k:%M")%></td> 
+    <td><%= link_to "Edit", edit_appointment_path(@appointment) %></td>
+    <td><%= link_to "Delete", delete_appointment_path(@appointment) %></td>
+    
+    </tr>
+ <table>

@@ -1,27 +1,27 @@
 
-
-
   <h2>Clients</h2>
-  <%= link_to("Add New Client", new_client_path, :class => 'action new') %>
 
-  <table class="listing" summary="Client list">
-    <tr class="header">
+  <%= link_to("Add New Client", new_client_path) %>
+  <br>
+  <br>
+
+  <table>
+    <tr>
       <th>Client</th>
-      <th>Gender</th>
-      <th>Trainer</th>
-      <th>Bookings</th>
+      <th>Number of Trainers</th>
+      <th>Number of Appointments</th>
+      <th>Action</th>
+
     </tr>
     <% @clients.each do |client| %>
     <tr>
       <td><%= client.name %></td>
-      <td>Gender</td>
-      <td>Trainer</td>
-      <td>Bookings</td>
-
-      <td class="actions">
-        <%= link_to("Show", client_path(client), :class => 'action show') %>
-        <%= link_to("Edit", edit_client_path(client), :class => 'action edit') %>
-
+      <td><%= client.trainers.size %></td>
+      <td><%= client.appointments.size %></td>
+      <td>
+        <%= link_to "Show", client_path(client) %>
+        <%= link_to "Edit", edit_client_path(client) %>
+        <%= link_to "Delete", delete_client_path(client)%>
       </td>
     </tr>
     <% end %>

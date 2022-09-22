@@ -1,2 +1,56 @@
-<h1>Clients#show</h1>
-<p>Find me in app/views/clients/show.html.erb</p>
+<h1>Client: <%= @client.name%> </h1>
+
+
+<%= link_to "<< Back to List", clients_path%><br>
+<br>
+<div>
+
+  <table>
+    <tr>
+      <th>Name: </th>
+      <td><%= @client.name %></td>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      <td><%= @client.gender %></td>
+    </tr>
+    <tr>
+      <th>Address:</th>
+            <% @client.addresses.each do |address| %>
+      <td>
+            <p>State: <%= address.state %></p>
+            <p>City: <%= address.city %></p>
+            <p>Post Code: <%= address.post_code %></p>
+            <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>Created:</th>
+      <td><%= @client.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated:</th>
+      <td><%= @client.updated_at %></td>
+    </tr>
+  </table>
+
+  <h3>Make a New Appointment</h3>
+  <%= link_to "Make an Appintment", new_appointment_path%><br>
+  
+
+  <h3>Appointments List</h3>
+  <table>
+  <% @client.appointments.each do |appt|%>
+    <tr>
+      <th>Trainer's Name</th>
+      <th>Appointment time</th>
+    </tr>
+    <tr>
+       <td><%=appt.trainer.name%></td>
+      <td><%= link_to appt.time.strftime("%B %d, %Y at %k:%M"), appointment_path(appt) %></td>
+      
+    </tr>
+      <%end%>
+
+</div>
+

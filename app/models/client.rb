@@ -5,4 +5,8 @@ class Client < ApplicationRecord
 
     accepts_nested_attributes_for :addresses
 
+    validates_presence_of :name
+    validates_length_of :name, :maximum => 200
+    validates_length_of :name, :minimum => 1
+
 end

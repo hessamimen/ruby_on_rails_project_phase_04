@@ -1,2 +1,16 @@
 <h1>Appointments#edit</h1>
 <p>Find me in app/views/appointments/edit.html.erb</p>
+
+
+<%= form_for(@appointment) do |f| %>
+    <%= f.label :time %>
+    <%= f.text_field :time  %><br>
+    <br>
+
+    <%= f.collection_select :trainer_id, Trainer.all, :id, :name, {:prompt => "Please Select a Trainer"} %>
+    <%= f.collection_select :client_id, Client.all, :id, :name, {:prompt => "Please Select a Client"} %>
+
+  
+ <%= f.submit %>
+
+<% end %>

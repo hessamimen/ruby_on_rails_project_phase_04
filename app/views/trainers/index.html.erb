@@ -1,2 +1,31 @@
-<h1>Trainers#index</h1>
-<p>Find me in app/views/trainers/index.html.erb</p>
+
+  <h2>Trainers</h2>
+
+  <%= link_to("Add New Trainer", new_trainer_path) %>
+  <br>
+  <br>
+
+  <table>
+    <tr>
+      <th>Trainer</th>
+      <th>Gender</th>
+      <th>Trainer</th>
+      <th>Bookings</th>
+    </tr>
+    <% @trainers.each do |trainer| %>
+    <tr>
+      <td><%= trainer.name %></td>
+      <td><%= trainer.gender%></td>
+      <td>Trainer</td>
+      <td>Bookings</td>
+
+      <td>
+        <%= link_to "Show", trainer_path(trainer) %>
+        <%= link_to "Edit", edit_trainer_path(trainer) %>
+        <%= link_to "Delete", delete_trainer_path(trainer) %>
+
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<%= link_to "<< Back to List", appointments_path %>
+
+<div>
+  <h2>Delete Appointment</h2>
+
+  <%= form_for(@appointment, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this appointment?</p>
+    
+    <p>Client: <%= @appointment.client.name %></p>
+    <p>Trainer: <%= @appointment.trainer.name %></p>
+    <p>Time: <%= @appointment.time.strftime("%B %d, %Y at %k:%M") %></p>
+
+
+    <div>
+      <%= f.submit("Delete Client") %>
+    </div>
+  <% end %>
+</div>

@@ -1,2 +1,40 @@
-<h1>Trainers#show</h1>
-<p>Find me in app/views/trainers/show.html.erb</p>
+<h1>Trainer</h1>
+
+
+<%= link_to "<< Back to List", trainers_path%>
+
+<div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <td><%= @trainer.name %></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td><%= @trainer.gender %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @trainer.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @trainer.updated_at %></td>
+    </tr>
+  </table>
+
+<h3>Appointments List</h3>
+  <table>
+  <% @trainer.appointments.each do |appt|%>
+    <tr>
+      <th>Client Name</th>
+      <th>Appointment time</th>
+    </tr>
+    <tr>
+       <td><%=appt.client.name%></td>
+      <td><%= appt.time%></td>
+    </tr>
+      <%end%>
+
+</div>
+
