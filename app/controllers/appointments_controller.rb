@@ -1,9 +1,18 @@
 class AppointmentsController < ApplicationController
+
+  layout "admin"
+
+  before_action :confirm_logged_in
+
+
+  def index
+    @appointments = Appointment.sorted
+  end
+
   def new
     @appointment = Appointment.new
     @trainers = Trainer.all
     @clients = Client.all
-
   end
 
   def create
@@ -29,6 +38,12 @@ class AppointmentsController < ApplicationController
 
   def delete
     @appointment = Appointment.find(params[:id])
+  end
+
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    redirect_to appointments_path
   end
 
   private

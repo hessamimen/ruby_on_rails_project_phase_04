@@ -1,29 +1,27 @@
+<% @page_title = "Trainers"%>
 
-  <h2>Trainers</h2>
-
+<h2>Trainers List</h2>
   <%= link_to("Add New Trainer", new_trainer_path) %>
   <br>
   <br>
-
   <table>
     <tr>
       <th>Trainer</th>
       <th>Gender</th>
-      <th>Trainer</th>
-      <th>Bookings</th>
+      <th>Number of Clients |</th>
+      <th>Number of Appointment</th>
+      <th>Action</th>
     </tr>
     <% @trainers.each do |trainer| %>
     <tr>
       <td><%= trainer.name %></td>
       <td><%= trainer.gender%></td>
-      <td>Trainer</td>
-      <td>Bookings</td>
-
+      <td> <%= trainer.clients.count%> </td>
+      <td><%= trainer.appointments.count%></td>
       <td>
         <%= link_to "Show", trainer_path(trainer) %>
         <%= link_to "Edit", edit_trainer_path(trainer) %>
         <%= link_to "Delete", delete_trainer_path(trainer) %>
-
       </td>
     </tr>
     <% end %>

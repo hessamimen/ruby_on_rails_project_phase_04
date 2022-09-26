@@ -1,4 +1,8 @@
 class TrainersController < ApplicationController
+
+  layout "admin"
+  before_action :confirm_logged_in
+
   def index
     @trainers = Trainer.all
   end
@@ -32,6 +36,9 @@ class TrainersController < ApplicationController
 
   def destroy
     @trainer = Trainer.find(params[:id])
+    @trainer.appointments.each do |appt|
+      appt.destroy
+    end
     @trainer.destroy
     redirect_to trainers_path
   end

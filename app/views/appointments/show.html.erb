@@ -1,5 +1,9 @@
 <h3>Appointment Details</h3>
 
+<%= link_to "<< Back to List", appointments_path%>
+<br>
+<br>
+
 
   <table>
     <tr>
@@ -11,7 +15,7 @@
     <tr>
     <td><%= @client.name %></td> 
     <td><%= @trainer.name %></td> 
-    <td><%= @appointment.time.strftime("%B %d, %Y at %k:%M")%></td> 
+    <td><%= @appointment.time.strftime("%b %d, %Y at %k:%M")%></td> 
     <td><%= link_to "Edit", edit_appointment_path(@appointment) %></td>
     <td><%= link_to "Delete", delete_appointment_path(@appointment) %></td>
     

@@ -1,17 +1,16 @@
+<% @page_title = "Clients"%>
 
   <h2>Clients</h2>
 
   <%= link_to("Add New Client", new_client_path) %>
   <br>
   <br>
-
   <table>
     <tr>
       <th>Client</th>
       <th>Number of Trainers</th>
       <th>Number of Appointments</th>
       <th>Action</th>
-
     </tr>
     <% @clients.each do |client| %>
     <tr>

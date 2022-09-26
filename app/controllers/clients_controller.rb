@@ -1,7 +1,11 @@
 class ClientsController < ApplicationController
 
+  layout "admin"
+  before_action :confirm_logged_in
+
+
   def index
-    @clients = Client.all
+    @clients = Client.by_earliest_created
   end
 
   def new
@@ -22,7 +26,7 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
-    @client.addresses.build
+    # @client.addresses.build
   end
 
   def update
@@ -38,6 +42,9 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
+    # @client.appointments.each do |appt|
+    #   appt.destroy
+    # end
     @client.destroy
     redirect_to clients_path
 

@@ -1,0 +1,25 @@
+<% @page_title = "Appointments"%>
+
+<h3>Appointments List</h3>
+
+  <%= link_to("Make New Appointment", new_appointment_path) %>
+  <br>
+  <br>
+
+  <table>
+    <tr>
+      <th>Appointment Time</th>
+      <th>Client's Name</th>
+      <th>Trainer's Name </th>
+    </tr>
+      <% @appointments.each do |appt|%>
+    <tr>
+      <td><%= link_to appt.time.strftime("%A %d %B %Y at %H:%M"), appointment_path(appt)%> </td>
+      <td><%= appt.client.name%></td>
+      <td><%= appt.trainer.name%></td>
+    </tr>
+      <%end%>
+
+  </table>
+
+

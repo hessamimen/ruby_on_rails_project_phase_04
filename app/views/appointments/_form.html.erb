@@ -1,0 +1,12 @@
+
+<h4>Current Time: <%= Time.now.strftime("%H:%M %A %d %B %Y ")%></h4>
+<%= form_for(@appointment) do |f| %>
+    <%= f.label :time %>
+    <%# <%= f.date_field :time  %><br> 
+    <%= f.datetime_select :time  %><br>
+    <br>
+    <%= f.collection_select :trainer_id, Trainer.all, :id, :name, {:prompt => "Please Select a Trainer"} %>
+    <%= f.collection_select :client_id, Client.all, :id, :name, {:prompt => "Please Select a Client"} %>
+ <%= f.submit %>
+
+<% end %>

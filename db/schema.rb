@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_20_105419) do
+ActiveRecord::Schema.define(version: 2022_09_26_121509) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "city"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 2022_09_20_105419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "client_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "first_name", limit: 25
+    t.string "last_name", limit: 50
+    t.string "email", limit: 100, default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username", limit: 25
+    t.string "password_digest"
+    t.string "uid"
+    t.index ["username"], name: "index_admin_users_on_username"
   end
 
   create_table "appointments", force: :cascade do |t|

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Trainer: <%= @page_title || "Admin Area"%> </title>
+    <%# <%= stylesheet_link_tag('admin', :media => 'all') %> 
+  </head>
+  <body>
+
+    <div id="header">
+      <h1>Book Trainer Admin</h1>
+    </div>
+    <div id="main">
+      <% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div>
+      <br><br>
+        <%= link_to "back to main page", admin_path %>
+      </div>
+    </div>
+    <div id="footer">
+      <p id="copyright">&copy; Hessam</p>
+    </div>
+  </body>
+</html>

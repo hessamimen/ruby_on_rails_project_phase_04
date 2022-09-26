@@ -25,16 +25,16 @@
 
 <h3>Appointments List</h3>
   <table>
-  <% @trainer.appointments.each do |appt|%>
     <tr>
       <th>Client Name</th>
       <th>Appointment time</th>
     </tr>
+  <% @trainer.appointments.each do |appt|%>
     <tr>
-       <td><%=appt.client.name%></td>
+      <td><%=appt.client%></td>
       <td><%= appt.time%></td>
     </tr>
       <%end%>
-
+ </table>
 </div>
 

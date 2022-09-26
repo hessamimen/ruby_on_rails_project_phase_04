@@ -3,27 +3,5 @@
 <%=link_to "<< Client List", clients_path %>
 <br>
 <br>
-
-
-<%= form_for(@client) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name  %><br>
-    <br>
-    <%= f.label :gender %>
-    <%= f.text_field :gender  %><br>
-    <br>
-    <%= f.fields_for :addresses do |addr| %>
-    <%= addr.label :city %>
-    <%= addr.text_field :city %><br>
-    <br>
-    <%= addr.label :state %>
-    <%= addr.text_field :state %><br>
-    <br>
-    <%= addr.label :post_code %>
-    <%= addr.text_field :post_code %><br>
-    <br>
-
- <%end%>
- <%= f.submit %>
-<% end %>
+<%= render "form" %>
 

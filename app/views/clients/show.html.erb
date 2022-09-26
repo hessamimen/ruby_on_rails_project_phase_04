@@ -1,43 +1,38 @@
 <h1>Client: <%= @client.name%> </h1>
-
-
-<%= link_to "<< Back to List", clients_path%><br>
+<%= link_to "<< Back to List", clients_path%>
 <br>
-<div>
+<br>
+<table>
+  <tr>
+    <th>Name:</th>
+    <td><%= @client.name %></td>
+  </tr>
+  <tr>
+    <th>Gender:</th>
+    <td><%= @client.gender %></td>
+  </tr>
+  <tr>
+    <th>Address:</th>
+          <% @client.addresses.each do |address| %>
+    <td>
+          <p>State: <%= address.state %></p>
+          <p>City: <%= address.city %></p>
+          <p>Post Code: <%= address.post_code %></p>
+          <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>Created:</th>
+    <td><%= @client.created_at.strftime("%B %d, %Y at %k:%M") %></td>
+  </tr>
+  <tr>
+    <th>Updated:</th>
+    <td><%= @client.updated_at.strftime("%B %d, %Y at %k:%M") %></td>
+  </tr>
+</table>
 
-  <table>
-    <tr>
-      <th>Name: </th>
-      <td><%= @client.name %></td>
-    </tr>
-    <tr>
-      <th>Gender:</th>
-      <td><%= @client.gender %></td>
-    </tr>
-    <tr>
-      <th>Address:</th>
-            <% @client.addresses.each do |address| %>
-      <td>
-            <p>State: <%= address.state %></p>
-            <p>City: <%= address.city %></p>
-            <p>Post Code: <%= address.post_code %></p>
-            <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>Created:</th>
-      <td><%= @client.created_at %></td>
-    </tr>
-    <tr>
-      <th>Updated:</th>
-      <td><%= @client.updated_at %></td>
-    </tr>
-  </table>
-
-  <h3>Make a New Appointment</h3>
-  <%= link_to "Make an Appintment", new_appointment_path%><br>
+  <h3><%= link_to "Make a New Appintment", new_appointment_path%></h3><br>
   
-
   <h3>Appointments List</h3>
   <table>
   <% @client.appointments.each do |appt|%>
@@ -48,9 +43,8 @@
     <tr>
        <td><%=appt.trainer.name%></td>
       <td><%= link_to appt.time.strftime("%B %d, %Y at %k:%M"), appointment_path(appt) %></td>
-      
     </tr>
       <%end%>
+  </table>
 
-</div>
 
