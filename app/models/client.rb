@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
     has_many :appointments, dependent: :destroy
     has_many :trainers, through: :appointments
+    has_many :feedbacks
     has_many :addresses
 
     scope :by_earliest_created, lambda { order(created_at: :asc) }

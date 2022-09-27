@@ -25,6 +25,11 @@ Rails.application.routes.draw do
       get :delete
     end
   end
+  resources :feedbacks do
+    member do
+      get :delete
+    end
+  end
   resources :appointments do 
     member do
       get :delete

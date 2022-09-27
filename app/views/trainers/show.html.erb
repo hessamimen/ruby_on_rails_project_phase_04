@@ -22,6 +22,18 @@
       <td><%= @trainer.updated_at %></td>
     </tr>
   </table>
+<br>
+
+<h3>Feedbacks</h3>
+  <%=link_to "Add Feedback for this Trainer", new_feedback_path(@trainer) %><br>
+
+  <%@trainer.feedbacks.each do |fd|%>
+    <%= fd.rating%> star -  <%= fd.comment%> 
+     <%= link_to "edit", edit_feedback_path(fd) %> 
+     <%# <%= link_to "Delet", delete_feedback_path(fd) %> 
+     <%= link_to "Delet", delete_feedback_path(fd)%><br>   
+  <%end%>
+  
 
 <h3>Appointments List</h3>
   <table>
@@ -31,7 +43,7 @@
     </tr>
   <% @trainer.appointments.each do |appt|%>
     <tr>
-      <td><%=appt.client%></td>
+      <td><%=appt.client.name%></td>
       <td><%= appt.time%></td>
     </tr>
       <%end%>
