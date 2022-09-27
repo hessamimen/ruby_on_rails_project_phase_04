@@ -33,6 +33,8 @@ class FeedbacksController < ApplicationController
 
     def delete
         @feedback = Feedback.find(params[:id])
+        @trainer = @feedback.trainer
+
     end
 
     def destroy

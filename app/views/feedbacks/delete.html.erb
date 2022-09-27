@@ -1,0 +1,14 @@
+<%= link_to "<< Back to List", trainer_path(@trainer) %>
+
+  <h2>Delete Comment</h2>
+
+  <%= form_for(@feedback, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this Comment?</p>
+
+    <p><%= @feedback.comment %></p>
+
+    <div>
+      <%= f.submit("Delete Comment") %>
+    </div>
+  <% end %>

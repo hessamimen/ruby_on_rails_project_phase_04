@@ -27,12 +27,23 @@
 <h3>Feedbacks</h3>
   <%=link_to "Add Feedback for this Trainer", new_feedback_path(@trainer) %><br>
 
-  <%@trainer.feedbacks.each do |fd|%>
-    <%= fd.rating%> star -  <%= fd.comment%> 
-     <%= link_to "edit", edit_feedback_path(fd) %> 
-     <%# <%= link_to "Delet", delete_feedback_path(fd) %> 
-     <%= link_to "Delet", delete_feedback_path(fd)%><br>   
-  <%end%>
+   <table>
+      <tr>
+        <th>Stars</th>
+        <th>Comment</th>
+        <th>Action</th>
+      </tr>
+    <%@trainer.feedbacks.each do |fd|%>
+      <tr>
+        <td><%= fd.rating%> </td>
+        <td><%= fd.comment%> </td>
+        <td>
+        <%= link_to "Edit", edit_feedback_path(fd) %> 
+        <%= link_to "Delete", delete_feedback_path(fd)%><br>  
+        </td> 
+      </tr>
+    <%end%>
+  </table>
   
 
 <h3>Appointments List</h3>
@@ -44,7 +55,7 @@
   <% @trainer.appointments.each do |appt|%>
     <tr>
       <td><%=appt.client.name%></td>
-      <td><%= appt.time%></td>
+      <td><%= appt.time.strftime("%b %d, %Y at %k:%M")%></td>
     </tr>
       <%end%>
  </table>

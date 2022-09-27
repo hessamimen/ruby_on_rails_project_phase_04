@@ -18,10 +18,9 @@
   </table>
   <% end %>
 </div>
-<%# test****************** %>
-<% if session && session[:user_id] %>
-  <h2>Email: <%= @adminuser.email %></h2>
-  <h2>GitHub UID: <%= @adminuser.uid %></h2>
-<% else %>
+
+
+<%# Github Login %>
+<% unless session && session[:user_id] %>
   <%= button_to('Log in with GitHub!', '/auth/github', method: :post) %>
 <% end %>
