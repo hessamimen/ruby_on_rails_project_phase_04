@@ -12,8 +12,12 @@ class TrainersController < ApplicationController
   end
 
   def create
-    @trainer = Trainer.create(trainer_params)
-    redirect_to trainers_path
+    @trainer = Trainer.new(trainer_params)
+    if @trainer.save
+      redirect_to trainers_path
+    else
+      render 'new'
+    end
   end
 
   def show

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  root 'access#menu'
+  
   get 'admin', :to => 'access#menu'
   get 'access/menu'
   get 'access/login'
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
 
   #test****
 
-
+  get 'sign_up', to: 'registrations#new'
+  post 'sign_up', to: 'registrations#create'
+ 
   
   resources :clients do 
     member do

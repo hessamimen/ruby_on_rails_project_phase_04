@@ -1,23 +1,40 @@
 <%= form_for(@client) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name  %><br>
-    <br>
-    <%= f.label :gender %>
-    <%= f.text_field :gender  %><br>
+
+    <% if @client.errors.any? %>
+    <% @client.errors.full_messages.each do |msg| %>
+      Error:<%= msg%><br><br>
+        <%end%>
+    <%end%>
+
+      <table>
+      <tr>
+      <th>  <%= f.label :name %></th>
+      <td><%= f.text_field :name  %></td>
+      </tr>
+      <tr>
+      <th><%= f.label :gender %></th>
+      <td><%= f.select :gender, ['Male', 'Female'], {:prompt => "Please Select a Gender"} %></td>
+      </tr>
+  </table>
 
    <h3>Address</h3>
   <%= f.fields_for :addresses do |addr| %>
-
-    <%= addr.label :city %>
-    <%= addr.text_field :city %><br>
-
-    <%= addr.label :state %>
-    <%= addr.text_field :state %><br>
-
-    <%= addr.label :post_code %>
-    <%= addr.text_field :post_code %><br>
+  <table>
+      <tr>
+      <th><%= addr.label :city %></th>
+      <td><%= addr.text_field :city %></td>
+      </tr>
+      <tr>
+      <th><%= addr.label :state %></th>
+      <td><%= addr.text_field :state %></td>
+      </tr>
+      <tr>
+      <th><%= addr.label :post_code %></th>
+      <td> <%= addr.text_field :post_code %></td>
+      </tr>
+  </table>
 
   <% end %>
- 
+ <br>
  <%= f.submit %>
 <% end %>

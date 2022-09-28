@@ -6,6 +6,9 @@ class AccessController < ApplicationController
 
 
   def menu
+    if session[:user_id]
+      @adminUser = AdminUser.find(session[:user_id])
+    end
   end
 
   def login
@@ -38,13 +41,16 @@ class AccessController < ApplicationController
 
   # test************
   def create
-    @adminuser =
+    @adminUser =
       AdminUser.find_or_create_by!(uid: auth['uid']) do |u|
-        u.username = auth['info']['nickname']
-        u.password_digest = auth['uid']
+        byebug
+        # u.username = auth['info']['nickname']
+        # u.password_digest = auth['uid']
+        u.name = auth['info']['name']
+        u.email = auth['info']['email']
       end
-
-    session[:user_id] = @adminuser.id
+      @adminUser.username = @adminUser.email
+    session[:user_id] = @adminUser.id
 
     render 'menu'
   end

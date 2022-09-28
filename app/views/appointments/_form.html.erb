@@ -1,6 +1,12 @@
 
 <h4>Current Time: <%= Time.now.strftime("%H:%M %A %d %B %Y ")%></h4>
 <%= form_for(@appointment) do |f| %>
+
+    <% if @appointment.errors.any? %>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      Error:<%= msg%><br><br>
+        <%end%>
+    <%end%>
     <%= f.label :time %>
     <%# <%= f.date_field :time  %><br> 
     <%= f.datetime_select :time  %><br>

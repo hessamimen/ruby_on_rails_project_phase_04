@@ -1,5 +1,10 @@
 <% @page_title = "Admin Login" %>
 
+<h3>Don't have an Account?</h3>
+
+<%=link_to "Create a Account", sign_up_path %><br><br>
+<h3>Already have an Account?</h3>
+
 <div>
   <%= form_tag(access_attempt_login_path, :method => :post) do %>
   <table>
@@ -21,6 +26,8 @@
 
 
 <%# Github Login %>
+<br>
+<h3>You can also login with your Github account</h3>
 <% unless session && session[:user_id] %>
   <%= button_to('Log in with GitHub!', '/auth/github', method: :post) %>
 <% end %>
