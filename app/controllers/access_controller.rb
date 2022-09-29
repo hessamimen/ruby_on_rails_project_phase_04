@@ -43,7 +43,6 @@ class AccessController < ApplicationController
   def create
     @adminUser =
       AdminUser.find_or_create_by!(uid: auth['uid']) do |u|
-        byebug
         # u.username = auth['info']['nickname']
         # u.password_digest = auth['uid']
         u.name = auth['info']['name']
